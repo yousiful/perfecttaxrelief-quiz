@@ -405,9 +405,9 @@ fbq('track', 'PageView');
 <!-- ===================== 5. CONTACT CAPTURE SCREEN ===================== -->
 <section id="screen-contact" class="screen">
   <div class="wrap form-shell section-pad">
-    <div class="eyebrow">Almost done</div>
-    <h2>Your next-step summary is ready</h2>
-    <p class="sub">Enter your details so we can prepare your confidential tax-relief review.</p>
+    <div class="eyebrow" id="contactEyebrow">Almost done</div>
+    <h2 id="contactHeadline">Your next-step summary is ready</h2>
+    <p class="sub" id="contactSub">Enter your details so we can prepare your confidential tax-relief review.</p>
 
     <div class="privacy-note">
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
@@ -782,7 +782,10 @@ function finishQuiz(){
   trackEvent('QuizCompleted', { ...state.answers });
   showScreen('screen-loading');
 
-  const steps = ['Checking urgency', 'Matching possible next steps', 'Preparing your private result'];
+  const isUnder10k = state.answers.estimated_tax_debt === 'Under $10,000';
+  const steps = isUnder10k
+    ? ['Checking your details', 'Preparing your private result']
+    : ['Checking urgency', 'Matching possible next steps', 'Preparing your private result'];
   const stepEl = document.getElementById('loadingStep');
   let i = 0;
   stepEl.textContent = steps[0];
@@ -794,6 +797,20 @@ function finishQuiz(){
   setTimeout(() => {
     clearInterval(interval);
     prefillHiddenFields();
+    // The under-$10k path gets an honest, apologetic heading here instead
+    // of the generic "next-step summary is ready" line -- telling someone
+    // we don't work with their balance BEFORE asking for their name/phone/
+    // email is more honest than only revealing it on the result screen
+    // after they've already handed over their info.
+    if (isUnder10k) {
+      document.getElementById('contactEyebrow').textContent = 'Assessment Complete';
+      document.getElementById('contactHeadline').textContent = "We're sorry, we don't currently work with tax debt under $10,000 professionally.";
+      document.getElementById('contactSub').textContent = "That said, we don't want to leave you empty-handed. Enter your details below and we'll send over a couple of free resources that may help.";
+    } else {
+      document.getElementById('contactEyebrow').textContent = 'Almost done';
+      document.getElementById('contactHeadline').textContent = 'Your next-step summary is ready';
+      document.getElementById('contactSub').textContent = 'Enter your details so we can prepare your confidential tax-relief review.';
+    }
     showScreen('screen-contact');
   }, 2000);
 }
