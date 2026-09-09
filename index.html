@@ -749,6 +749,15 @@ function selectOption(field, label, cardEl, wrapEl){
 
   // Leave time for the selection animation before auto-advancing.
   setTimeout(() => {
+    // Under $10k disqualifies for full-service resolution immediately --
+    // skip the remaining qualifying questions (urgency/filing/outcome)
+    // rather than asking 3 more questions that won't change the outcome,
+    // and go straight to contact capture so this lead still lands in the
+    // under-10k nurture sequence.
+    if (field === 'estimated_tax_debt' && label === 'Under $10,000') {
+      finishQuiz();
+      return;
+    }
     if (state.currentQuestion < QUESTIONS.length - 1) {
       state.currentQuestion++;
       renderQuestion();
