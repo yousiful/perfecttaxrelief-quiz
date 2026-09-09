@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+<title>Perfect Tax Relief | Tax Relief Route Finder</title>
+<meta name="description" content="Take the free 60-second Tax Relief Route Finder to see which resolution path may fit your situation. Free, confidential, no obligation." />
+<meta name="robots" content="noindex, follow" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- ============ META PIXEL (Perfect Tax Relief, real pixel already live on this account's other funnels) ============ -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1520095023224222');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1520095023224222&ev=PageView&noscript=1"/></noscript>
+
+<style>
+  :root{
+    --navy:#0B1F3A;
+    --navy-2:#122A4D;
+    --royal:#2451D6;
+    --royal-dark:#1B3EAE;
+    --teal:#3E8E91;
+    --gold:#C9A227;
+    --bg:#FFFFFF;
+    --panel:#F6F8FC;
+    --ink:#111A2E;
+    --muted:#5B6472;
+    --muted-2:#8891A0;
+    --line:#E7EAF0;
+    --danger:#C24A3B;
+    --radius:14px;
+    --radius-lg:18px;
+    --shadow-sm:0 2px 10px rgba(11,31,58,0.06);
+    --shadow-md:0 10px 30px rgba(11,31,58,0.10);
+    --shadow-lg:0 24px 60px rgba(11,31,58,0.16);
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+    padding-bottom:0;
+  }
+  img,svg{display:block}
+  button{font-family:inherit}
+  a{color:inherit}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  .icon{width:22px;height:22px;flex:0 0 auto}
+  .icon-sm{width:16px;height:16px}
+
+  /* ===================== TOP TRUST BAR ===================== */
+  .trustbar{
+    background:var(--navy);
+    color:#fff;
+  }
+  .trustbar-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:12px;padding:10px 20px;max-width:var(--maxw);margin:0 auto;
+    flex-wrap:wrap;
+  }
+  .brand{
+    display:flex;align-items:center;gap:8px;font-weight:800;font-size:15px;letter-spacing:-0.01em;
+    white-space:nowrap;
+  }
+  .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+  .trust-mid{
+    display:flex;align-items:center;gap:8px;font-size:12.5px;color:#C9D3E6;font-weight:500;
+  }
+  .trust-mid .privacy{display:flex;align-items:center;gap:6px}
+  .trust-right{display:flex;align-items:center;gap:10px}
+  .call-pill{
+    display:flex;align-items:center;gap:7px;background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.16);color:#fff;text-decoration:none;
+    padding:7px 12px;border-radius:999px;font-weight:700;font-size:13px;
+    transition:background .15s;
+  }
+  .call-pill:hover{background:rgba(255,255,255,0.16)}
+  @media (max-width:720px){
+    .trust-mid{display:none}
+    .trustbar-inner{padding:9px 16px}
+  }
+
+  /* ===================== SHARED LAYOUT ===================== */
+  .screen{display:none}
+  .screen.active{display:block}
+  .section-pad{padding:44px 0 40px}
+  @media (max-width:720px){ .section-pad{padding:28px 0 90px} }
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--royal);background:rgba(36,81,214,0.08);
+    padding:6px 12px;border-radius:999px;margin-bottom:14px;
+  }
+  h1{font-size:clamp(28px,4.4vw,44px);line-height:1.14;letter-spacing:-0.02em;color:var(--navy);margin:0 0 14px}
+  h2{font-size:clamp(22px,3.2vw,30px);line-height:1.2;letter-spacing:-0.01em;color:var(--navy);margin:0 0 10px}
+  .sub{font-size:17px;color:var(--muted);max-width:600px;margin:0 0 22px}
+  .center{text-align:center}
+  .center .sub{margin-left:auto;margin-right:auto}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    border:none;border-radius:var(--radius);cursor:pointer;font-weight:700;
+    transition:transform .12s ease, box-shadow .12s ease, background .15s ease;
+    text-decoration:none;
+  }
+  .btn-primary{
+    background:linear-gradient(180deg,var(--royal),var(--royal-dark));
+    color:#fff;font-size:17px;padding:17px 26px;width:100%;
+    box-shadow:0 12px 28px rgba(36,81,214,0.30);
+  }
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 16px 34px rgba(36,81,214,0.38)}
+  .btn-primary:active{transform:translateY(0)}
+  .btn-secondary{
+    background:#fff;color:var(--royal);border:1.5px solid var(--line);
+    font-size:15px;padding:14px 20px;width:100%;
+  }
+  .btn-secondary:hover{border-color:var(--royal)}
+  .btn-ghost{
+    background:transparent;color:var(--muted);font-size:14px;padding:10px 6px;font-weight:600;
+  }
+  .btn-call{
+    background:var(--teal);color:#fff;font-size:18px;padding:18px 26px;width:100%;
+    box-shadow:0 12px 28px rgba(62,142,145,0.30);
+  }
+  .btn-call:hover{transform:translateY(-1px)}
+
+  .microcopy{font-size:13px;color:var(--muted-2);text-align:center;margin-top:12px}
+
+  /* ===================== HERO ===================== */
+  .hero{background:linear-gradient(180deg,#F7F9FD 0%, #FFFFFF 65%)}
+  .hero-inner{max-width:640px;margin:0 auto;text-align:center;padding-top:8px}
+  .trust-bullets{
+    display:flex;flex-direction:column;gap:10px;max-width:420px;margin:0 auto 26px;text-align:left;
+  }
+  .trust-bullet{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--ink);font-weight:600}
+  .trust-bullet .check{
+    flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:rgba(62,142,145,0.14);
+    color:var(--teal);display:flex;align-items:center;justify-content:center;
+  }
+  .hero-cta-wrap{max-width:400px;margin:0 auto}
+  .hero-visual{
+    margin:34px auto 0;max-width:520px;background:var(--panel);border:1px solid var(--line);
+    border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow-sm);
+  }
+  .hero-visual-row{display:flex;align-items:center;gap:12px;padding:10px 4px}
+  .hero-visual-row + .hero-visual-row{border-top:1px solid var(--line)}
+  .hero-visual .ic{
+    width:38px;height:38px;border-radius:10px;background:#fff;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;color:var(--royal);flex:0 0 auto;
+  }
+  .hero-visual .tx b{display:block;font-size:14px;color:var(--navy)}
+  .hero-visual .tx span{font-size:12.5px;color:var(--muted)}
+
+  /* Sticky mobile CTA (hero only) */
+  .sticky-cta{
+    display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+    background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);
+    border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(11,31,58,0.08);
+  }
+  @media (max-width:720px){
+    body.show-sticky .sticky-cta{display:block}
+  }
+
+  /* ===================== QUIZ ===================== */
+  .quiz-shell{max-width:640px;margin:0 auto}
+  .progress-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+  .progress-label{font-size:13px;font-weight:700;color:var(--muted)}
+  .progress-track{height:6px;background:var(--line);border-radius:999px;overflow:hidden;margin-bottom:26px}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--royal));border-radius:999px;transition:width .35s ease}
+
+  .q-back{
+    display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;color:var(--muted);
+    background:none;border:none;cursor:pointer;padding:6px 0;margin-bottom:6px;
+  }
+  .q-back:hover{color:var(--royal)}
+
+  .q-title{font-size:clamp(20px,3vw,26px);color:var(--navy);font-weight:800;letter-spacing:-0.01em;margin:6px 0 20px}
+
+  .options{display:grid;grid-template-columns:1fr;gap:10px}
+  @media (min-width:640px){
+    .options.two-col{grid-template-columns:1fr 1fr}
+  }
+  .option-card{
+    display:flex;align-items:center;gap:14px;text-align:left;
+    background:#fff;border:1.5px solid var(--line);border-radius:var(--radius);
+    padding:16px 16px;cursor:pointer;width:100%;min-height:64px;
+    transition:border-color .15s, box-shadow .15s, background .15s, transform .1s;
+  }
+  .option-card:hover{border-color:var(--royal);box-shadow:var(--shadow-sm)}
+  .option-card:active{transform:scale(0.99)}
+  .option-card.selected{
+    border-color:var(--royal);background:rgba(36,81,214,0.05);
+    box-shadow:0 0 0 3px rgba(36,81,214,0.12);
+  }
+  .option-card .oic{
+    flex:0 0 auto;width:40px;height:40px;border-radius:10px;background:var(--panel);
+    display:flex;align-items:center;justify-content:center;color:var(--royal);
+  }
+  .option-card.selected .oic{background:var(--royal);color:#fff}
+  .option-label{font-size:15.5px;font-weight:600;color:var(--ink)}
+  .option-check{
+    margin-left:auto;flex:0 0 auto;width:22px;height:22px;border-radius:50%;
+    border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;color:#fff;
+  }
+  .option-card.selected .option-check{background:var(--royal);border-color:var(--royal)}
+
+  /* ===================== LOADING ===================== */
+  .loading-shell{max-width:420px;margin:80px auto;text-align:center}
+  .spinner-wrap{position:relative;width:120px;height:120px;margin:0 auto 26px}
+  .spinner-wrap svg{width:100%;height:100%;transform:rotate(-90deg)}
+  .spinner-track{fill:none;stroke:var(--line);stroke-width:8}
+  .spinner-fill{fill:none;stroke:var(--royal);stroke-width:8;stroke-linecap:round;
+    stroke-dasharray:326.7; stroke-dashoffset:326.7; animation:spinfill 2s ease forwards;}
+  @keyframes spinfill{to{stroke-dashoffset:20}}
+  .spinner-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-weight:800;color:var(--navy);font-size:15px}
+  .loading-title{font-size:19px;font-weight:800;color:var(--navy);margin-bottom:8px}
+  .loading-step{font-size:14.5px;color:var(--muted);min-height:20px;transition:opacity .2s}
+
+  /* ===================== CONTACT FORM ===================== */
+  .form-shell{max-width:560px;margin:0 auto}
+  .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+  @media (max-width:520px){ .field-grid{grid-template-columns:1fr} }
+  .field{margin-bottom:12px}
+  .field label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px}
+  .field input,.field select{
+    width:100%;padding:14px 14px;border-radius:12px;border:1.5px solid var(--line);
+    font-size:15.5px;font-family:inherit;color:var(--ink);background:#fff;
+  }
+  .field input:focus,.field select:focus{outline:none;border-color:var(--royal);box-shadow:0 0 0 3px rgba(36,81,214,0.12)}
+  .field .opt{font-weight:500;color:var(--muted-2);font-size:12px}
+  .consent-text{font-size:12.5px;color:var(--muted-2);line-height:1.55;margin-top:14px}
+  .consent-text a{color:var(--royal);text-decoration:underline}
+  .privacy-note{
+    display:flex;align-items:flex-start;gap:10px;background:var(--panel);border:1px solid var(--line);
+    border-radius:12px;padding:14px 16px;margin-bottom:20px;font-size:13.5px;color:var(--muted);
+  }
+  .privacy-note .icon{color:var(--teal);margin-top:1px}
+  .form-error{display:none;background:#FBECEA;border:1px solid #F1C7C1;color:var(--danger);
+    font-size:13.5px;padding:10px 14px;border-radius:10px;margin-bottom:14px}
+
+  /* ===================== RESULT SCREENS ===================== */
+  .result-shell{max-width:640px;margin:0 auto}
+  .summary-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-lg);
+    padding:20px 22px;margin:22px 0;
+  }
+  .summary-card h3{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 14px;font-weight:800}
+  .summary-row{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-top:1px solid var(--line);font-size:14.5px}
+  .summary-row:first-of-type{border-top:none}
+  .summary-row .k{color:var(--muted);font-weight:600}
+  .summary-row .v{color:var(--navy);font-weight:700;text-align:right}
+
+  .urgency-note{
+    display:flex;gap:12px;background:#FFF6E9;border:1px solid #F0DDB0;border-radius:12px;
+    padding:14px 16px;margin:18px 0;font-size:14px;color:#7A5B12;
+  }
+  .urgency-note .icon{color:var(--gold);flex:0 0 auto;margin-top:1px}
+
+  .cta-stack{display:flex;flex-direction:column;gap:12px;margin-top:22px}
+  .footer-trust{text-align:center;color:var(--muted-2);font-size:13px;margin-top:26px}
+
+  .lowbal-buttons{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+
+  /* ===================== EXIT INTENT MODAL ===================== */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(11,19,36,0.55);z-index:100;
+    display:none;align-items:center;justify-content:center;padding:20px;
+  }
+  .modal-overlay.open{display:flex}
+  .modal-card{
+    background:#fff;border-radius:var(--radius-lg);padding:28px 24px;max-width:420px;width:100%;
+    box-shadow:var(--shadow-lg);text-align:center;position:relative;
+  }
+  .modal-close{
+    position:absolute;top:12px;right:12px;background:none;border:none;cursor:pointer;
+    color:var(--muted-2);width:32px;height:32px;display:flex;align-items:center;justify-content:center;
+    border-radius:50%;
+  }
+  .modal-close:hover{background:var(--panel)}
+  .modal-card h3{font-size:20px;color:var(--navy);margin:6px 0 10px}
+  .modal-card p{font-size:14.5px;color:var(--muted);margin:0 0 20px}
+
+  .container-narrow{max-width:640px;margin:0 auto}
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+</style>
+</head>
+<body>
+
+<!-- ===================== 1. TOP TRUST BAR ===================== -->
+<div class="trustbar">
+  <div class="trustbar-inner">
+    <div class="brand"><span class="dot"></span> Perfect Tax Relief</div>
+    <div class="trust-mid">
+      <span>Free • Confidential • No-obligation consultation</span>
+      <span class="privacy" title="Your information is kept private">
+        <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        Your information is kept private
+      </span>
+    </div>
+    <div class="trust-right">
+      <a class="call-pill" href="tel:+18882228814" onclick="trackEvent('ClickToCall')">
+        <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (888) 222-8814
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 2. HERO SCREEN ===================== -->
+<section id="screen-hero" class="screen active">
+  <div class="wrap hero section-pad">
+    <div class="hero-inner">
+      <div class="eyebrow">Tax Relief Route Finder</div>
+      <h1>Find Your Best Next Step for IRS Tax Debt</h1>
+      <p class="sub" style="margin-left:auto;margin-right:auto">Take the 60-second Tax Relief Route Finder to see which resolution path may fit your situation.</p>
+
+      <div class="trust-bullets">
+        <div class="trust-bullet">
+          <span class="check"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+          Free confidential review
+        </div>
+        <div class="trust-bullet">
+          <span class="check"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+          Help with IRS and state tax issues
+        </div>
+        <div class="trust-bullet">
+          <span class="check"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+          No obligation to speak with a specialist
+        </div>
+      </div>
+
+      <div class="hero-cta-wrap">
+        <button class="btn btn-primary" onclick="startQuiz()">Start My 60-Second Assessment</button>
+        <p class="microcopy">No SSN required. No credit card required.</p>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-visual-row">
+          <div class="ic"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div class="tx"><b>Takes about 60 seconds</b><span>5 quick questions, no paperwork</span></div>
+        </div>
+        <div class="hero-visual-row">
+          <div class="ic"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+          <div class="tx"><b>Private &amp; confidential</b><span>Your answers are never shared publicly</span></div>
+        </div>
+        <div class="hero-visual-row">
+          <div class="ic"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <div class="tx"><b>No obligation</b><span>A specialist reviews your situation, you decide next steps</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 3. QUIZ SCREEN ===================== -->
+<section id="screen-quiz" class="screen">
+  <div class="wrap quiz-shell section-pad">
+    <button class="q-back" id="quizBackBtn" onclick="goBack()" style="display:none">
+      <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Back
+    </button>
+    <div class="progress-row">
+      <span class="progress-label" id="progressLabel">Question 1 of 5</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:20%"></div></div>
+    <h2 class="q-title" id="qTitle"></h2>
+    <div class="options" id="qOptions"></div>
+  </div>
+</section>
+
+<!-- ===================== 4. LOADING SCREEN ===================== -->
+<section id="screen-loading" class="screen">
+  <div class="wrap">
+    <div class="loading-shell">
+      <div class="spinner-wrap">
+        <svg viewBox="0 0 120 120">
+          <circle class="spinner-track" cx="60" cy="60" r="52"/>
+          <circle class="spinner-fill" cx="60" cy="60" r="52"/>
+        </svg>
+        <div class="spinner-label">🔒</div>
+      </div>
+      <div class="loading-title" id="loadingTitle">Reviewing your answers…</div>
+      <div class="loading-step" id="loadingStep"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 5. CONTACT CAPTURE SCREEN ===================== -->
+<section id="screen-contact" class="screen">
+  <div class="wrap form-shell section-pad">
+    <div class="eyebrow">Almost done</div>
+    <h2>Your next-step summary is ready</h2>
+    <p class="sub">Enter your details so we can prepare your confidential tax-relief review.</p>
+
+    <div class="privacy-note">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+      <span>Your information is kept private and is used only to prepare your confidential review.</span>
+    </div>
+
+    <div class="form-error" id="formError">Please fill in your name, phone, and email so we can prepare your review.</div>
+
+    <form id="leadForm" onsubmit="return handleSubmit(event)" novalidate>
+      <div class="field-grid">
+        <div class="field">
+          <label for="firstName">First name</label>
+          <input type="text" id="firstName" name="firstName" autocomplete="given-name" required />
+        </div>
+        <div class="field">
+          <label for="lastName">Last name</label>
+          <input type="text" id="lastName" name="lastName" autocomplete="family-name" required />
+        </div>
+      </div>
+      <div class="field">
+        <label for="phone">Mobile phone</label>
+        <input type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="(555) 555-5555" required />
+      </div>
+      <div class="field">
+        <label for="email">Email address</label>
+        <input type="email" id="email" name="email" autocomplete="email" required />
+      </div>
+      <div class="field-grid">
+        <div class="field">
+          <label for="contactTime">Preferred contact time</label>
+          <select id="contactTime" name="contactTime">
+            <option value="">Select one</option>
+            <option>Morning</option>
+            <option>Afternoon</option>
+            <option>Evening</option>
+            <option>Anytime</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="stateField">What state do you live in? <span class="opt">(optional)</span></label>
+          <select id="stateField" name="stateField">
+            <option value="">Select a state</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Hidden fields: quiz answers -->
+      <input type="hidden" name="tax_issue" id="hf_tax_issue" />
+      <input type="hidden" name="estimated_tax_debt" id="hf_estimated_tax_debt" />
+      <input type="hidden" name="urgency_level" id="hf_urgency_level" />
+      <input type="hidden" name="returns_filed_status" id="hf_returns_filed_status" />
+      <input type="hidden" name="desired_outcome" id="hf_desired_outcome" />
+
+      <!-- Hidden fields: attribution -->
+      <input type="hidden" name="utm_source" id="hf_utm_source" />
+      <input type="hidden" name="utm_medium" id="hf_utm_medium" />
+      <input type="hidden" name="utm_campaign" id="hf_utm_campaign" />
+      <input type="hidden" name="utm_content" id="hf_utm_content" />
+      <input type="hidden" name="utm_term" id="hf_utm_term" />
+      <input type="hidden" name="source_url" id="hf_source_url" />
+      <input type="hidden" name="quiz_completed_at" id="hf_quiz_completed_at" />
+
+      <button type="submit" class="btn btn-primary" id="submitBtn">See My Recommended Next Step</button>
+      <p class="consent-text">
+        By submitting, you agree that Perfect Tax Relief may contact you by phone, text, or email about your request, including by autodialer or prerecorded message. Consent is not a condition of purchase. Message and data rates may apply. See our
+        <a href="#" data-legal="terms">Terms</a> and <a href="#" data-legal="privacy">Privacy Policy</a>.
+        <!-- EDITABLE: replace with Perfect Tax Relief's approved TCPA / legal disclosure language and real links. -->
+      </p>
+    </form>
+  </div>
+</section>
+
+<!-- ===================== 6a. QUALIFIED RESULT SCREEN ===================== -->
+<section id="screen-result-qualified" class="screen">
+  <div class="wrap result-shell section-pad">
+    <div class="eyebrow">Assessment Complete</div>
+    <h2>You may be a strong candidate for a tax-relief review.</h2>
+    <p class="sub">Based on your answers, you may have options for addressing tax debt, collection pressure, or unfiled returns. A tax-resolution specialist can review the details of your situation and help identify an appropriate next step.</p>
+
+    <div class="summary-card">
+      <h3>Your situation</h3>
+      <div class="summary-row"><span class="k">Tax issue</span><span class="v" id="sumTaxIssue">—</span></div>
+      <div class="summary-row"><span class="k">Estimated tax debt</span><span class="v" id="sumDebt">—</span></div>
+      <div class="summary-row"><span class="k">Urgency</span><span class="v" id="sumUrgency">—</span></div>
+      <div class="summary-row"><span class="k">Filing status</span><span class="v" id="sumFiling">—</span></div>
+    </div>
+
+    <div class="urgency-note" id="urgencyNote" style="display:none">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span>Because you indicated possible collection activity or a deadline, speaking with a specialist promptly may be important.</span>
+    </div>
+
+    <div class="cta-stack">
+      <a class="btn btn-call" href="tel:+18882228814" onclick="trackEvent('ClickToCall')">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call Now: (888) 222-8814
+      </a>
+      <button class="btn btn-primary" onclick="handleBooking()">Schedule My Free Confidential Review</button>
+    </div>
+
+    <p class="footer-trust">Consultations are confidential and there is no obligation.</p>
+  </div>
+</section>
+
+<!-- ===================== 6b. LOW-BALANCE RESULT SCREEN ===================== -->
+<section id="screen-result-lowbalance" class="screen">
+  <div class="wrap result-shell section-pad">
+    <div class="eyebrow">Your Assessment Is Complete</div>
+    <h2>Your fastest path may be a simpler resolution option.</h2>
+    <p class="sub">Based on the balance you entered, your situation may be better suited to a direct payment arrangement or another lower-complexity option. Full tax-resolution services are generally designed for more complex cases, typically involving tax debt of $10,000 or more.</p>
+
+    <div class="lowbal-buttons">
+      <button class="btn btn-primary" onclick="handleLowBalanceAction('payment-options')">Explore Payment Options</button>
+      <button class="btn btn-secondary" onclick="handleLowBalanceAction('checklist')">Get the Free Tax-Debt Checklist</button>
+      <button class="btn btn-ghost" onclick="handleLowBalanceAction('speak')">Speak With Someone About My Situation</button>
+    </div>
+
+    <p class="footer-trust">Consultations are confidential and there is no obligation.</p>
+  </div>
+</section>
+
+<!-- ===================== STICKY MOBILE CTA (hero only) ===================== -->
+<div class="sticky-cta" id="stickyCta">
+  <button class="btn btn-primary" onclick="startQuiz()">Start Assessment</button>
+</div>
+
+<!-- ===================== EXIT-INTENT MODAL ===================== -->
+<div class="modal-overlay" id="exitModal">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeExitModal()" aria-label="Close">
+      <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h3>Before you go—want a private review of your tax situation?</h3>
+    <p>You're partway through your confidential assessment. It only takes a few more seconds to finish.</p>
+    <button class="btn btn-primary" onclick="closeExitModal(); resumeQuiz();">Finish My Assessment</button>
+  </div>
+</div>
+
+<script>
+/* =========================================================================
+   CONFIG — edit these when connecting the page to real infrastructure.
+   ========================================================================= */
+const CONFIG = {
+  // Where the lead payload is POSTed. Points at this repo's own Netlify
+  // Function, which safely holds the real GHL PIT token server-side.
+  // If this page is hosted somewhere without that function (e.g. plain
+  // GitHub Pages), point this at a Zapier/Make/GHL inbound webhook URL instead.
+  submitEndpoint: '/.netlify/functions/submit-lead',
+
+  // EDITABLE: real GHL calendar / booking page URL for qualified leads.
+  bookingUrl: 'https://link.perfecttaxrelief.com/widget/booking/REPLACE-WITH-REAL-CALENDAR-ID',
+
+  // EDITABLE: destinations for the low-balance result buttons.
+  paymentOptionsUrl: 'https://perfecttaxrelief.com/payment-options',
+  checklistUrl: 'https://perfecttaxrelief.com/tax-debt-checklist',
+
+  phoneDisplay: '(888) 222-8814',
+  phoneHref: 'tel:+18882228814',
+};
+
+/* =========================================================================
+   ICONS per option (inline SVG, no external requests)
+   ========================================================================= */
+const ICONS = {
+  dollar: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+  mail: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>',
+  warning: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+  doc: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>',
+  question: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 2-3 4"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+  scaleUp: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>',
+  calm: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+  bell: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>',
+  bank: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="21" x2="21" y2="21"/><line x1="5" y1="21" x2="5" y2="10"/><line x1="9" y1="21" x2="9" y2="10"/><line x1="15" y1="21" x2="15" y2="10"/><line x1="19" y1="21" x2="19" y2="10"/><polygon points="12 2 21 8 3 8"/></svg>',
+  gavel: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m14 13-7.5 7.5a1 1 0 0 1-3-3L11 10"/><path d="m16 16 6-6"/><path d="m8 8 6-6"/><path d="m9 7 8 8"/><path d="m21 11-8-8"/></svg>',
+  checkDoc: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 12.5"/></svg>',
+  cross: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>',
+  calendar: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
+  reduce: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
+  shield: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+  compass: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>',
+};
+
+/* =========================================================================
+   QUESTION DATA
+   ========================================================================= */
+const QUESTIONS = [
+  {
+    field: 'tax_issue',
+    title: "What's the biggest tax issue you're dealing with?",
+    options: [
+      { label: 'I owe back taxes', icon: 'dollar' },
+      { label: 'The IRS or state has contacted me', icon: 'mail' },
+      { label: 'I have a wage garnishment, levy, or lien', icon: 'warning' },
+      { label: 'I have unfiled tax returns', icon: 'doc' },
+      { label: "I'm not sure what to do", icon: 'question' },
+    ],
+  },
+  {
+    field: 'estimated_tax_debt',
+    title: 'About how much tax debt do you believe you owe?',
+    twoCol: true,
+    options: [
+      { label: 'Under $10,000', icon: 'dollar' },
+      { label: '$10,000–$24,999', icon: 'dollar' },
+      { label: '$25,000–$49,999', icon: 'dollar' },
+      { label: '$50,000–$99,999', icon: 'dollar' },
+      { label: '$100,000+', icon: 'scaleUp' },
+      { label: "I'm not sure", icon: 'question' },
+    ],
+  },
+  {
+    field: 'urgency_level',
+    title: "Is there an IRS or state deadline you're worried about?",
+    options: [
+      { label: "No, I'm planning ahead", icon: 'calm' },
+      { label: 'I received a notice', icon: 'bell' },
+      { label: 'I have a payment deadline', icon: 'calendar' },
+      { label: 'My wages may be garnished or are being garnished', icon: 'warning' },
+      { label: 'My bank account may be levied or has been levied', icon: 'bank' },
+      { label: "I'm facing an audit or lien", icon: 'gavel' },
+      { label: "I'm not sure", icon: 'question' },
+    ],
+  },
+  {
+    field: 'returns_filed_status',
+    title: 'Are all of your required tax returns filed?',
+    options: [
+      { label: 'Yes, they are filed', icon: 'checkDoc' },
+      { label: 'No, I have unfiled returns', icon: 'cross' },
+      { label: "I'm not sure", icon: 'question' },
+    ],
+  },
+  {
+    field: 'desired_outcome',
+    title: 'Which outcome would help you most?',
+    options: [
+      { label: 'A manageable monthly payment', icon: 'calendar' },
+      { label: 'Reducing or settling what I owe', icon: 'reduce' },
+      { label: 'Stopping collection pressure', icon: 'shield' },
+      { label: 'Getting caught up on unfiled returns', icon: 'checkDoc' },
+      { label: 'Understanding all my options', icon: 'compass' },
+    ],
+  },
+];
+
+const US_STATES = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming','District of Columbia'];
+
+/* =========================================================================
+   STATE
+   ========================================================================= */
+const state = {
+  currentQuestion: 0,
+  answers: {},
+  quizStarted: false,
+  quizCompleted: false,
+  exitIntentShown: false,
+  isQualified: null,
+};
+
+/* =========================================================================
+   TRACKING
+   ========================================================================= */
+function trackEvent(name, params){
+  params = params || {};
+  try {
+    if (window.fbq) {
+      const standard = { PageView:1, Lead:1, Schedule:1, CompleteRegistration:1, Contact:1 };
+      if (standard[name]) fbq('track', name, params);
+      else fbq('trackCustom', name, params);
+    }
+  } catch(e){}
+  try {
+    if (window.gtag) gtag('event', name, params);
+  } catch(e){}
+  try { console.log('[track]', name, params); } catch(e){}
+}
+
+/* =========================================================================
+   SCREEN MANAGEMENT
+   ========================================================================= */
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.body.classList.toggle('show-sticky', id === 'screen-hero');
+  window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+}
+
+function startQuiz(){
+  state.quizStarted = true;
+  state.currentQuestion = 0;
+  trackEvent('QuizStarted');
+  showScreen('screen-quiz');
+  renderQuestion();
+}
+
+function resumeQuiz(){
+  showScreen('screen-quiz');
+  renderQuestion();
+}
+
+/* =========================================================================
+   QUIZ RENDERING
+   ========================================================================= */
+function renderQuestion(){
+  const q = QUESTIONS[state.currentQuestion];
+  const total = QUESTIONS.length;
+  const num = state.currentQuestion + 1;
+
+  document.getElementById('progressLabel').textContent = `Question ${num} of ${total}`;
+  document.getElementById('progressFill').style.width = `${(num/total)*100}%`;
+  document.getElementById('quizBackBtn').style.display = state.currentQuestion > 0 ? 'inline-flex' : 'none';
+  document.getElementById('qTitle').textContent = q.title;
+
+  const optsWrap = document.getElementById('qOptions');
+  optsWrap.className = 'options' + (q.twoCol ? ' two-col' : '');
+  optsWrap.innerHTML = '';
+
+  const currentAnswer = state.answers[q.field];
+
+  q.options.forEach(opt => {
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'option-card' + (currentAnswer === opt.label ? ' selected' : '');
+    card.innerHTML = `
+      <span class="oic">${ICONS[opt.icon] || ICONS.question}</span>
+      <span class="option-label">${opt.label}</span>
+      <span class="option-check"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+    `;
+    card.addEventListener('click', () => selectOption(q.field, opt.label, card, optsWrap));
+    optsWrap.appendChild(card);
+  });
+}
+
+function selectOption(field, label, cardEl, wrapEl){
+  wrapEl.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+  cardEl.classList.add('selected');
+  state.answers[field] = label;
+  trackEvent('QuestionAnswered', { question: field, answer: label });
+
+  // Leave time for the selection animation before auto-advancing.
+  setTimeout(() => {
+    if (state.currentQuestion < QUESTIONS.length - 1) {
+      state.currentQuestion++;
+      renderQuestion();
+    } else {
+      finishQuiz();
+    }
+  }, 420);
+}
+
+function goBack(){
+  if (state.currentQuestion > 0) {
+    state.currentQuestion--;
+    renderQuestion();
+  }
+}
+
+/* =========================================================================
+   LOADING SCREEN
+   ========================================================================= */
+function finishQuiz(){
+  state.quizCompleted = true;
+  trackEvent('QuizCompleted', { ...state.answers });
+  showScreen('screen-loading');
+
+  const steps = ['Checking urgency', 'Matching possible next steps', 'Preparing your private result'];
+  const stepEl = document.getElementById('loadingStep');
+  let i = 0;
+  stepEl.textContent = steps[0];
+  const interval = setInterval(() => {
+    i++;
+    if (i < steps.length) stepEl.textContent = steps[i];
+  }, 620);
+
+  setTimeout(() => {
+    clearInterval(interval);
+    prefillHiddenFields();
+    showScreen('screen-contact');
+  }, 2000);
+}
+
+/* =========================================================================
+   CONTACT FORM
+   ========================================================================= */
+function getUtmParams(){
+  const params = new URLSearchParams(window.location.search);
+  return {
+    utm_source: params.get('utm_source') || '',
+    utm_medium: params.get('utm_medium') || '',
+    utm_campaign: params.get('utm_campaign') || '',
+    utm_content: params.get('utm_content') || '',
+    utm_term: params.get('utm_term') || '',
+  };
+}
+
+function prefillHiddenFields(){
+  document.getElementById('hf_tax_issue').value = state.answers.tax_issue || '';
+  document.getElementById('hf_estimated_tax_debt').value = state.answers.estimated_tax_debt || '';
+  document.getElementById('hf_urgency_level').value = state.answers.urgency_level || '';
+  document.getElementById('hf_returns_filed_status').value = state.answers.returns_filed_status || '';
+  document.getElementById('hf_desired_outcome').value = state.answers.desired_outcome || '';
+
+  const utm = getUtmParams();
+  document.getElementById('hf_utm_source').value = utm.utm_source;
+  document.getElementById('hf_utm_medium').value = utm.utm_medium;
+  document.getElementById('hf_utm_campaign').value = utm.utm_campaign;
+  document.getElementById('hf_utm_content').value = utm.utm_content;
+  document.getElementById('hf_utm_term').value = utm.utm_term;
+  document.getElementById('hf_source_url').value = window.location.href;
+  document.getElementById('hf_quiz_completed_at').value = new Date().toISOString();
+}
+
+function populateStateDropdown(){
+  const sel = document.getElementById('stateField');
+  US_STATES.forEach(s => {
+    const o = document.createElement('option');
+    o.value = s; o.textContent = s;
+    sel.appendChild(o);
+  });
+}
+
+function computeTags(){
+  const a = state.answers;
+  const tags = ['tax-assessment-completed'];
+  const debt = a.estimated_tax_debt;
+  const isUnder10k = debt === 'Under $10,000';
+  if (!isUnder10k) tags.push('qualified-10k-plus');
+  else tags.push('under-10k');
+
+  const garnishmentSignal = a.tax_issue === 'I have a wage garnishment, levy, or lien'
+    || a.urgency_level === 'My wages may be garnished or are being garnished';
+  if (garnishmentSignal) tags.push('urgent-garnishment');
+
+  if (a.urgency_level === 'My bank account may be levied or has been levied') tags.push('urgent-bank-levy');
+
+  if (a.urgency_level === "I'm facing an audit or lien" || a.urgency_level === 'I have a payment deadline') {
+    tags.push('urgent-tax-action');
+  }
+
+  if (a.returns_filed_status === 'No, I have unfiled returns' || a.tax_issue === 'I have unfiled tax returns') {
+    tags.push('unfiled-returns');
+  }
+
+  return tags;
+}
+
+function hasUrgentSignal(tags){
+  return tags.some(t => t.indexOf('urgent-') === 0);
+}
+
+function handleSubmit(evt){
+  evt.preventDefault();
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const contactTime = document.getElementById('contactTime').value;
+  const stateVal = document.getElementById('stateField').value;
+
+  const errorEl = document.getElementById('formError');
+  if (!firstName || !lastName || !phone || !email) {
+    errorEl.style.display = 'block';
+    return false;
+  }
+  errorEl.style.display = 'none';
+
+  const tags = computeTags();
+  const isUnder10k = state.answers.estimated_tax_debt === 'Under $10,000';
+  state.isQualified = !isUnder10k;
+
+  const payload = {
+    firstName, lastName, phone, email,
+    preferredContactTime: contactTime,
+    state: stateVal,
+    answers: { ...state.answers },
+    tags,
+    qualified: state.isQualified,
+    priority: hasUrgentSignal(tags) ? 'high' : 'normal',
+    utm: getUtmParams(),
+    sourceUrl: window.location.href,
+    completedAt: document.getElementById('hf_quiz_completed_at').value,
+  };
+
+  const submitBtn = document.getElementById('submitBtn');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Submitting…';
+
+  trackEvent('LeadSubmitted', { qualified: payload.qualified, priority: payload.priority });
+  trackEvent('Lead', {}); // real Meta standard event, matches this account's existing conversion tracking
+
+  submitLead(payload).finally(() => {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'See My Recommended Next Step';
+    showResult(payload);
+  });
+
+  return false;
+}
+
+function submitLead(payload){
+  return fetch(CONFIG.submitEndpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  }).catch(err => {
+    // Never block the visitor's result on a backend hiccup — log and continue.
+    console.warn('Lead submit failed (non-blocking):', err);
+  });
+}
+
+/* =========================================================================
+   RESULT SCREENS
+   ========================================================================= */
+function showResult(payload){
+  if (payload.qualified) {
+    document.getElementById('sumTaxIssue').textContent = payload.answers.tax_issue || '—';
+    document.getElementById('sumDebt').textContent = payload.answers.estimated_tax_debt || '—';
+    document.getElementById('sumUrgency').textContent = payload.answers.urgency_level || '—';
+    document.getElementById('sumFiling').textContent = payload.answers.returns_filed_status || '—';
+    document.getElementById('urgencyNote').style.display = payload.priority === 'high' ? 'flex' : 'none';
+    trackEvent('QualifiedLead', { priority: payload.priority });
+    trackEvent('CompleteRegistration', {}); // real Meta standard event
+    showScreen('screen-result-qualified');
+  } else {
+    trackEvent('Under10kLead');
+    showScreen('screen-result-lowbalance');
+  }
+}
+
+function handleBooking(){
+  trackEvent('CalendarBooked');
+  trackEvent('Schedule', {}); // real Meta standard event, matches this account's existing tracking
+  window.location.href = CONFIG.bookingUrl;
+}
+
+function handleLowBalanceAction(kind){
+  if (kind === 'payment-options') {
+    window.location.href = CONFIG.paymentOptionsUrl;
+  } else if (kind === 'checklist') {
+    window.location.href = CONFIG.checklistUrl;
+  } else if (kind === 'speak') {
+    trackEvent('ClickToCall', { source: 'lowbalance-secondary' });
+    window.location.href = CONFIG.phoneHref;
+  }
+}
+
+/* =========================================================================
+   EXIT-INTENT (desktop mouseleave-to-top + mobile tab-hide fallback)
+   Only fires after the quiz has started and before it's completed.
+   ========================================================================= */
+function maybeShowExitIntent(){
+  if (state.exitIntentShown || !state.quizStarted || state.quizCompleted) return;
+  state.exitIntentShown = true;
+  document.getElementById('exitModal').classList.add('open');
+}
+function closeExitModal(){
+  document.getElementById('exitModal').classList.remove('open');
+}
+document.addEventListener('mouseleave', (e) => {
+  if (e.clientY <= 0) maybeShowExitIntent();
+});
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') maybeShowExitIntent();
+});
+
+/* =========================================================================
+   INIT
+   ========================================================================= */
+document.addEventListener('DOMContentLoaded', () => {
+  populateStateDropdown();
+  document.body.classList.add('show-sticky');
+});
+</script>
+</body>
+</html>
