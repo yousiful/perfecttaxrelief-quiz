@@ -12,13 +12,8 @@
  *      GHL_PIT_TOKEN   = the location's Private Integration Token
  *      GHL_LOCATION_ID = the location ID for Perfect Tax Relief
  *
- * 2. In GoHighLevel, create custom fields on the Contact object matching the
- *    keys this function sends (see CUSTOM_FIELD_KEYS below) -- or edit
- *    CUSTOM_FIELD_KEYS to match whatever field keys already exist in that
- *    location. GHL's v2 API accepts custom fields addressed by `key`
- *    (fieldKey) for most text/single-line fields; if a field doesn't accept
- *    key-based addressing, you'll need its custom field ID instead (find via
- *    GET /locations/{locationId}/customFields) and reference it by `id`.
+ * 2. Custom fields are addressed by ID (CUSTOM_FIELD_IDS below); IDs come from
+ *    GET /locations/{locationId}/customFields.
  *
  * 3. Build the actual notification/SMS/email/redirect behavior as GHL
  *    Workflows triggered off the tags this function applies:
@@ -40,25 +35,23 @@
 const GHL_BASE_URL = 'https://services.leadconnectorhq.com';
 const GHL_API_VERSION = '2021-07-28';
 
-// Maps our internal field names -> the GHL custom field `key` to send.
-// Edit the right-hand values to match the real custom field keys once
-// they're created in the Perfect Tax Relief GHL location.
-const CUSTOM_FIELD_KEYS = {
-  tax_issue: 'tax_issue',
-  estimated_tax_debt: 'estimated_tax_debt',
-  urgency_level: 'urgency_level',
-  returns_filed_status: 'returns_filed_status',
-  desired_outcome: 'desired_outcome',
-  preferredContactTime: 'preferred_contact_time',
-  state: 'lead_state',
-  utm_source: 'utm_source',
-  utm_medium: 'utm_medium',
-  utm_campaign: 'utm_campaign',
-  utm_content: 'utm_content',
-  utm_term: 'utm_term',
-  sourceUrl: 'quiz_source_url',
-  completedAt: 'quiz_completed_at',
-  priority: 'lead_priority',
+// Internal field name -> GHL custom field ID ("Quiz - ..." fields in the PTR location).
+const CUSTOM_FIELD_IDS = {
+  tax_issue: '2Wmb65r9INtFBVmAkMno',
+  estimated_tax_debt: 'DZJaZ70hkqZXVWdMvgZW',
+  urgency_level: '5kngGqhh6HqDwscodrPx',
+  returns_filed_status: 'Hx0JP364iJNGyZycEnnf',
+  desired_outcome: 'tjx6CbZNz9ofkJ4OvVCc',
+  preferredContactTime: 'PRFgtOk6XLtIug2LrZOs',
+  state: 'FgdJ4KlJCnmToxpxG5CN',
+  utm_source: 'lZHYJJx2i1RmHKh2yli6',
+  utm_medium: '681ToQXCSGbvOAgGlKF6',
+  utm_campaign: 'Lnv8scnePSlFuRRazfoD',
+  utm_content: 'rFkiY14dw81RuX7Q9Boz',
+  utm_term: 'u604ivVIAGUEcLAE0PE7',
+  sourceUrl: 'qrQQUSQp2x27SpuAhffQ',
+  completedAt: 'W4CtTtYOsq1mNM5qlOqb',
+  priority: '0mz2V3EKlg64ZsO3rAhS',
 };
 
 exports.handler = async (event) => {
@@ -101,9 +94,9 @@ exports.handler = async (event) => {
     completedAt,
     priority,
   })
-    .filter(([, value]) => value !== undefined && value !== null && value !== '')
+    .filter(([key, value]) => CUSTOM_FIELD_IDS[key] && value !== undefined && value !== null && value !== '')
     .map(([key, value]) => ({
-      key: CUSTOM_FIELD_KEYS[key] || key,
+      id: CUSTOM_FIELD_IDS[key],
       field_value: String(value),
     }));
 
@@ -113,7 +106,8 @@ exports.handler = async (event) => {
     lastName,
     email,
     phone,
-    tags,
+    state: state || undefined,
+    tags: [...new Set([...tags, 'Survey filled'])],
     customFields,
     source: 'Tax Relief Route Finder Quiz',
   };
