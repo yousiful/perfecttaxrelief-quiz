@@ -107,7 +107,8 @@ exports.handler = async (event) => {
     email,
     phone,
     state: state || undefined,
-    tags: [...new Set([...tags, 'Survey filled'])],
+    // One tag only; qualification/urgency details go in the note below.
+    tags: ['Survey filled'],
     customFields,
     source: 'Tax Relief Route Finder Quiz',
   };
@@ -134,7 +135,30 @@ exports.handler = async (event) => {
       };
     }
 
-    console.log('[submit-lead] GHL upsert succeeded for', email, 'tags:', tags);
+    const contactId = JSON.parse(respText)?.contact?.id;
+    if (contactId) {
+      const noteLines = [
+        'Tax Relief Quiz submission',
+        `Best time to contact: ${preferredContactTime || 'Not given'}`,
+        `State: ${state || 'Not given'}`,
+        `Qualified ($10k+): ${qualified ? 'Yes' : 'No'}`,
+        `Priority: ${priority || 'normal'}`,
+        ...Object.entries(answers).map(([k, v]) => `${k.replace(/_/g, ' ')}: ${v}`),
+        tags.length ? `Flags: ${tags.join(', ')}` : '',
+      ].filter(Boolean);
+      const noteResp = await fetch(`${GHL_BASE_URL}/contacts/${contactId}/notes`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Version: GHL_API_VERSION,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ body: noteLines.join('\n') }),
+      });
+      if (!noteResp.ok) console.error('[submit-lead] note failed', noteResp.status, await noteResp.text());
+    }
+
+    console.log('[submit-lead] GHL upsert succeeded for', email);
     return {
       statusCode: 200,
       body: JSON.stringify({ success: true, ghlConnected: true }),
