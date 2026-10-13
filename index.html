@@ -95,6 +95,11 @@ fbq('track', 'PageView');
   }
 
   /* ===================== SHARED LAYOUT ===================== */
+  .hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+  .code-input{font-size:28px;letter-spacing:10px;text-align:center;font-weight:700}
+  .verify-links{display:flex;justify-content:space-between;gap:12px;margin-top:14px;font-size:14px}
+  .verify-links button{background:none;border:none;color:var(--navy);text-decoration:underline;cursor:pointer;padding:6px 0;font:inherit}
+  .verify-ok{display:none;color:var(--navy);font-weight:600;margin-bottom:12px}
   .screen{display:none}
   .screen.active{display:block}
   .section-pad{padding:44px 0 40px}
@@ -457,6 +462,12 @@ fbq('track', 'PageView');
         </div>
       </div>
 
+      <!-- Bots fill every field they find; people never see this one. -->
+      <div class="hp" aria-hidden="true">
+        <label for="company_website">Company website</label>
+        <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off" />
+      </div>
+
       <!-- Hidden fields: quiz answers -->
       <input type="hidden" name="tax_issue" id="hf_tax_issue" />
       <input type="hidden" name="estimated_tax_debt" id="hf_estimated_tax_debt" />
@@ -479,6 +490,29 @@ fbq('track', 'PageView');
         <a href="https://perfecttaxrelief.com/terms-of-services/" target="_blank" rel="noopener">Terms</a> and <a href="https://perfecttaxrelief.com/privacy/" target="_blank" rel="noopener">Privacy Policy</a>.
       </p>
     </form>
+  </div>
+</section>
+
+<!-- ===================== 5b. PHONE VERIFICATION SCREEN ===================== -->
+<section id="screen-verify" class="screen">
+  <div class="wrap form-shell section-pad">
+    <div class="eyebrow">One last step</div>
+    <h2>Confirm your phone number</h2>
+    <p class="sub">We just texted a 6-digit code to <b id="verifyPhone"></b>. Enter it to see your result and pick a time with a specialist.</p>
+    <div class="verify-ok" id="verifyResent">New code sent.</div>
+    <div class="form-error" id="verifyError">That code didn't match. Check the text and try again.</div>
+    <form onsubmit="return handleVerify(event)" novalidate>
+      <div class="field">
+        <label for="verifyCode">Verification code</label>
+        <input type="text" id="verifyCode" class="code-input" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="------" />
+      </div>
+      <button type="submit" class="btn btn-primary" id="verifyBtn">Confirm and See My Result</button>
+    </form>
+    <div class="verify-links">
+      <button type="button" onclick="resendCode()">Text me a new code</button>
+      <button type="button" onclick="showScreen('screen-contact')">Wrong number? Go back</button>
+    </div>
+    <p class="footer-trust">No code coming? Call us at <a href="tel:+18887544054">(888) 754-4054</a>.</p>
   </div>
 </section>
 
@@ -699,6 +733,7 @@ function showScreen(id){
 
 function startQuiz(){
   state.quizStarted = true;
+  if (!state.quizStartedAt) state.quizStartedAt = Date.now();
   state.currentQuestion = 0;
   trackEvent('QuizStarted');
   showScreen('screen-quiz');
@@ -917,6 +952,8 @@ function handleSubmit(evt){
     utm: getUtmParams(),
     sourceUrl: window.location.href,
     completedAt: document.getElementById('hf_quiz_completed_at').value,
+    hp: document.getElementById('company_website').value,
+    elapsedMs: state.quizStartedAt ? Date.now() - state.quizStartedAt : null,
   };
 
   const submitBtn = document.getElementById('submitBtn');
@@ -926,10 +963,11 @@ function handleSubmit(evt){
   trackEvent('LeadSubmitted', { qualified: payload.qualified, priority: payload.priority });
   trackEvent('Lead', {}); // real Meta standard event, matches this account's existing conversion tracking
 
-  submitLead(payload).finally(() => {
+  submitLead(payload).then((res) => {
     submitBtn.disabled = false;
     submitBtn.textContent = 'See My Recommended Next Step';
-    showResult(payload);
+    if (res && res.verify && res.token) showVerify(payload, res.token);
+    else showResult(payload);
   });
 
   return false;
@@ -940,9 +978,79 @@ function submitLead(payload){
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
-  }).catch(err => {
+  }).then(r => r.json()).catch(err => {
     // Never block the visitor's result on a backend hiccup — log and continue.
     console.warn('Lead submit failed (non-blocking):', err);
+    return null;
+  });
+}
+
+/* =========================================================================
+   PHONE VERIFICATION (qualified leads confirm a texted code before booking)
+   ========================================================================= */
+const verify = { token: null, payload: null };
+
+function showVerify(payload, token){
+  verify.token = token;
+  verify.payload = payload;
+  const d = payload.phone.replace(/\D/g, '').slice(-10);
+  document.getElementById('verifyPhone').textContent = d.length === 10 ? `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}` : payload.phone;
+  document.getElementById('verifyCode').value = '';
+  document.getElementById('verifyError').style.display = 'none';
+  document.getElementById('verifyResent').style.display = 'none';
+  trackEvent('VerifyShown');
+  showScreen('screen-verify');
+  setTimeout(() => document.getElementById('verifyCode').focus(), 50);
+}
+
+function handleVerify(evt){
+  evt.preventDefault();
+  const code = document.getElementById('verifyCode').value.replace(/\D/g, '');
+  const err = document.getElementById('verifyError');
+  if (code.length !== 6) {
+    err.textContent = 'Enter the 6-digit code from the text.';
+    err.style.display = 'block';
+    return false;
+  }
+  const btn = document.getElementById('verifyBtn');
+  btn.disabled = true;
+  btn.textContent = 'Checking…';
+  fetch('/.netlify/functions/verify-phone', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ token: verify.token, code }),
+  }).then(r => r.json()).catch(() => null).then((res) => {
+    btn.disabled = false;
+    btn.textContent = 'Confirm and See My Result';
+    if (res && res.ok) {
+      trackEvent('PhoneVerified');
+      showResult(verify.payload);
+      return;
+    }
+    err.textContent = res && res.reason === 'expired'
+      ? 'That code expired. Tap "Text me a new code" below.'
+      : "That code didn't match. Check the text and try again.";
+    err.style.display = 'block';
+  });
+  return false;
+}
+
+function resendCode(){
+  const note = document.getElementById('verifyResent');
+  const err = document.getElementById('verifyError');
+  err.style.display = 'none';
+  fetch('/.netlify/functions/verify-phone', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ token: verify.token, action: 'resend' }),
+  }).then(r => r.json()).catch(() => null).then((res) => {
+    if (res && res.ok && res.token) {
+      verify.token = res.token;
+      note.style.display = 'block';
+    } else {
+      err.textContent = "We couldn't send another code. Call us at (888) 754-4054 and we'll help you right away.";
+      err.style.display = 'block';
+    }
   });
 }
 

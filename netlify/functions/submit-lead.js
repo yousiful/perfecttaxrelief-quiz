@@ -32,7 +32,11 @@
  * =================================================================
  */
 
+const { sendCode } = require('../lib/verify');
+
 const GHL_BASE_URL = 'https://services.leadconnectorhq.com';
+// Nobody reads 5 questions and types name, phone and email this fast.
+const MIN_HUMAN_MS = 5000;
 const GHL_API_VERSION = '2021-07-28';
 
 // Internal field name -> GHL custom field ID ("Quiz - ..." fields in the PTR location).
@@ -69,8 +73,15 @@ exports.handler = async (event) => {
   const {
     firstName, lastName, phone, email,
     preferredContactTime, state, answers = {}, tags = [],
-    qualified, priority, utm = {}, sourceUrl, completedAt,
+    qualified, priority, utm = {}, sourceUrl, completedAt, hp, elapsedMs,
   } = payload;
+
+  // Bot filter: the hidden honeypot field is filled, or the form was finished impossibly fast.
+  // Answer like a normal success so the bot learns nothing; nothing reaches GHL.
+  if (hp || (typeof elapsedMs === 'number' && elapsedMs < MIN_HUMAN_MS)) {
+    console.log('[submit-lead] bot blocked', { hp: !!hp, elapsedMs });
+    return { statusCode: 200, body: JSON.stringify({ success: true }) };
+  }
 
   const token = process.env.GHL_PIT_TOKEN;
   const locationId = process.env.GHL_LOCATION_ID;
@@ -159,9 +170,12 @@ exports.handler = async (event) => {
     }
 
     console.log('[submit-lead] GHL upsert succeeded for', email);
+    // Qualified leads confirm their phone with a texted code before they can book.
+    // If the text can't be sent, don't block a real person: they go straight to their result.
+    const verifyToken = qualified && contactId ? await sendCode(contactId, 1) : null;
     return {
       statusCode: 200,
-      body: JSON.stringify({ success: true, ghlConnected: true }),
+      body: JSON.stringify({ success: true, ghlConnected: true, verify: !!verifyToken, token: verifyToken }),
     };
   } catch (err) {
     console.error('[submit-lead] GHL request threw', err);
